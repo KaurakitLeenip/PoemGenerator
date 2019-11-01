@@ -66,6 +66,7 @@ def test_connect():
 @socketio.on('disconnect', namespace='/')
 def test_disconnect():
     print('Client disconnected')
+    socketio.emit('newnumber', {'number': 400}, include_self=False)
 
 if __name__ == "__main__":
     socketio.run(app)
