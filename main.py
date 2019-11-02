@@ -22,8 +22,8 @@ class RandomThread(Thread):
         super(RandomThread, self).__init__()
 
     def randomNumberGenerator(self):
+        poem = Poem()
         while not thread_stop_event.isSet():
-            poem = Poem()
             line = poem.get_line(7, [5, 7])
             socketio.emit('newnumber', {'number': line}, namespace='/')
             line = poem.get_line(7, [5, 7])
@@ -32,8 +32,8 @@ class RandomThread(Thread):
             socketio.emit('newnumber', {'number': line}, namespace='/')
             line = poem.get_line(9, [5, 9])
             socketio.emit('newnumber', {'number': line}, namespace='/')
-            poem.lines = []
             socketio.emit('newnumber', {'number': "-"*50}, namespace='/')
+            poem.clear()
 
     def run(self):
         self.randomNumberGenerator()

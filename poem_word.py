@@ -3,6 +3,7 @@ from nltk import pos_tag
 from nltk import word_tokenize
 from pronouncing import rhymes
 import random
+import traceback
 
 class Poem_Word:
     word = ""
@@ -38,7 +39,7 @@ class Poem_Word:
             syls = self.nsyl(item)
             if syl in syls or syl+1 in syls or syl-1 in syls:
                 res.append(item)
-        return res
+        return arr
 
     def get_word(self, tag, syl, rhyme=None):
         raw = tuple({word for word, pos in brown.tagged_words()[:80000] if pos.startswith(tag)})
@@ -62,9 +63,12 @@ class Poem_Word:
             except KeyError:
                 continue
 
+        if len(res) == 0:
+            print("asdf")
         try:
             self.word = random.choice(res)
-        except IndexError:
-            print(tag, syl, res)
+        except IndexError as ex:
+            traceback.print_exception(type(ex), ex, ex.__traceback__)
+            print(tag, syl, res, rhyme.word)
             self.no_syls = 1
             self.word = "to"

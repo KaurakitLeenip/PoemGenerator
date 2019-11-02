@@ -18,6 +18,10 @@ class Poem:
                ]
     lines = []
 
+    def clear(self):
+        self.lines = []
+        self.index = 0
+
     #check if the poem currently has a word with a specified rhyming tag
     def check_rhyme_tags(self, rhyme_tag):
         for line in self.lines:
@@ -35,6 +39,7 @@ class Poem:
     def get_line(self, syl, rhyming_syls):
         line = PoemLine()
         line.line = []
+        line.rhyme_words = []
         tags = random.choice(self.tag_set)
         line.rhyme_scheme = self.get_syl_set(syl, len(tags), rhyming_syls)
         for i in range(len(tags)):
