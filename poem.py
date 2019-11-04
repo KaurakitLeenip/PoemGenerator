@@ -47,13 +47,13 @@ class Poem:
             #if the word is tagged as a rhyming word
             #and if the poem has an existing word that is tagged as such
             scheme = line.rhyme_scheme[i][1]
-            if scheme > 0 and self.check_rhyme_tags(scheme):
-                word.get_word(tags[i], line.rhyme_scheme[i][0], self.check_rhyme_tags(scheme))
-                line.line.append(word)
+            # if scheme > 0 and self.check_rhyme_tags(scheme):
+            #     word.get_word(tags[i], line.rhyme_scheme[i][0], self.check_rhyme_tags(scheme))
+            #     line.line.append(word)
             # just add it normally
-            else:
-                word.get_word(tags[i], line.rhyme_scheme[i][0])
-                line.line.append(word)
+            # else:
+            word.get_word(tags[i], line.rhyme_scheme[i][0])
+            line.line.append(word)
 
         line.set_rhyme_tags()
         self.lines.append(line)
