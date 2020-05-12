@@ -69,6 +69,6 @@ def test_disconnect():
     socketio.emit('newnumber', {'number': 400}, include_self=False)
 
 if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0')
+    socketio.run(app, host='0.0.0.0', port=80)
     # main()
 

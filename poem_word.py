@@ -69,6 +69,6 @@ class Poem_Word:
             self.word = random.choice(res)
         except IndexError as ex:
             traceback.print_exception(type(ex), ex, ex.__traceback__)
-            print(tag, syl, res, rhyme.word)
+            print(tag, syl, res)
             self.no_syls = 1
             self.word = "to"
